@@ -65,11 +65,13 @@ print_info "Stowing dotfiles..."
 [ -f "$HOME/.gitconfig" ] && rm -f "$HOME/.gitconfig"
 [ -f "$HOME/.vimrc" ] && rm -f "$HOME/.vimrc"
 [ -f "$HOME/.ssh/config" ] && rm -f "$HOME/.ssh/config"
+[ -L "$HOME/iterm2" ] && rm -f "$HOME/iterm2"
 
 stow zsh
 stow git
 stow vim
 stow ssh
+stow iterm2
 
 # Ensure .ssh directory has correct permissions
 chmod 700 "$HOME/.ssh"
@@ -77,18 +79,6 @@ chmod 600 "$HOME/.ssh/config"
 
 # ------------------------- iTerm2 Configuration -------------------------
 print_info "Configuring iTerm2..."
-
-# 创建 ~/iterm2 软链接指向 dotfiles/iterm2
-if [ -L "$HOME/iterm2" ]; then
-    print_info "~/iterm2 symlink already exists"
-elif [ -e "$HOME/iterm2" ]; then
-    print_warn "~/iterm2 exists but is not a symlink, skipping..."
-else
-    ln -s "$DOTFILES_DIR/iterm2" "$HOME/iterm2"
-    print_info "Created ~/iterm2 symlink"
-fi
-
-# 让 iTerm2 从自定义目录读取配置
 defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
 defaults write com.googlecode.iterm2 PrefsCustomFolder "$HOME/iterm2"
 print_info "iTerm2 configured to load from ~/iterm2"
