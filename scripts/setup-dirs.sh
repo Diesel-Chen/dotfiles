@@ -72,16 +72,16 @@ for path in "${(@k)DIRS}"; do
   if [[ -d "$full_path" ]]; then
     print -P "%F{green}已存在： ~/$path%f"
   else
-    mkdir -p "$full_path"
+    /bin/mkdir -p "$full_path"
     print -P "%F{yellow}创建： ~/$path%f"
   fi
 done
 
 # 每年自动创建当年的 Archive 目录
-current_year=$(date +%Y)
+current_year=$(/bin/date +%Y)
 archive_year="$HOME/Archive/$current_year"
 if [[ ! -d "$archive_year" ]]; then
-  mkdir -p "$archive_year"
+  /bin/mkdir -p "$archive_year"
   print -P "%F{cyan}创建当年归档目录： ~/Archive/$current_year%f"
 fi
 
