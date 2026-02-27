@@ -66,6 +66,33 @@ else
     print_info "Powerlevel10k already installed"
 fi
 
+# ------------------------- Zsh 第三方插件 -------------------------
+ZSH_CUSTOM="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
+
+# zsh-autosuggestions
+if [ ! -d "$ZSH_CUSTOM/plugins/zsh-autosuggestions" ]; then
+    print_info "Installing zsh-autosuggestions..."
+    git clone https://github.com/zsh-users/zsh-autosuggestions "$ZSH_CUSTOM/plugins/zsh-autosuggestions"
+else
+    print_info "zsh-autosuggestions already installed"
+fi
+
+# zsh-history-substring-search
+if [ ! -d "$ZSH_CUSTOM/plugins/zsh-history-substring-search" ]; then
+    print_info "Installing zsh-history-substring-search..."
+    git clone https://github.com/zsh-users/zsh-history-substring-search "$ZSH_CUSTOM/plugins/zsh-history-substring-search"
+else
+    print_info "zsh-history-substring-search already installed"
+fi
+
+# fast-syntax-highlighting
+if [ ! -d "$ZSH_CUSTOM/plugins/fast-syntax-highlighting" ]; then
+    print_info "Installing fast-syntax-highlighting..."
+    git clone https://github.com/zdharma-continuum/fast-syntax-highlighting "$ZSH_CUSTOM/plugins/fast-syntax-highlighting"
+else
+    print_info "fast-syntax-highlighting already installed"
+fi
+
 # ------------------------- Brew Bundle -------------------------
 print_info "Running brew bundle..."
 cd "$DOTFILES_DIR"
