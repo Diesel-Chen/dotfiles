@@ -2,11 +2,15 @@
 
 set -e
 
-DOTFILES_DIR="$HOME/dotfiles"
+# 自动检测 dotfiles 目录
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+DOTFILES_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 
 echo "=========================================="
 echo "  Dotfiles Installation Script"
 echo "=========================================="
+echo "Dotfiles directory: $DOTFILES_DIR"
+echo ""
 
 # Colors
 RED='\033[0;31m'
@@ -74,8 +78,19 @@ chmod 600 "$HOME/.ssh/config"
 # ------------------------- iTerm2 Configuration -------------------------
 print_info "Configuring iTerm2..."
 
-defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
-defaults write com.googlecode.iterm2 PrefsCustomFolder "$DOTFILES_DIR/iterm2"
+# 创建符号链接到 Library/Preferences
+ITERM_PREFS_DIR="$HOME/Library/Preferences"
+ITERM_PLIST="$ITERM_PREFS_DIR/com.googlecode.iterm2.plist"
+
+# 备份现有配置
+if [ -f "$ITERM_PLIST" ] && [ ! -L "$ITERM_PLIST" ]; then
+    print_info "Backing up existing iTerm2 config..."
+    mv "$ITERM_PLIST" "$ITERM_PLIST.backup"
+fi
+
+# 创建符号链接
+ln -sf "$DOTFILES_DIR/iterm2/com.googlecode.iterm2.plist" "$ITERM_PLIST"
+print_info "iTerm2 config linked via symlink"
 
 # ------------------------- fzf Key Bindings -------------------------
 if [ -f /opt/homebrew/opt/fzf/install ]; then
