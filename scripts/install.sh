@@ -58,6 +58,7 @@ brew bundle
 
 # ------------------------- GNU Stow -------------------------
 print_info "Stowing dotfiles..."
+cd "$DOTFILES_DIR"
 
 # Remove existing config files that would conflict
 [ -f "$HOME/.zshrc" ] && rm -f "$HOME/.zshrc"
