@@ -65,7 +65,7 @@ print_info "Stowing dotfiles..."
 [ -f "$HOME/.gitconfig" ] && rm -f "$HOME/.gitconfig"
 [ -f "$HOME/.vimrc" ] && rm -f "$HOME/.vimrc"
 [ -f "$HOME/.ssh/config" ] && rm -f "$HOME/.ssh/config"
-[ -L "$HOME/iterm2" ] && rm -f "$HOME/iterm2"
+[ -L "$HOME/.iterm2" ] && rm -f "$HOME/.iterm2"
 
 stow zsh
 stow git
@@ -80,8 +80,8 @@ chmod 600 "$HOME/.ssh/config"
 # ------------------------- iTerm2 Configuration -------------------------
 print_info "Configuring iTerm2..."
 defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
-defaults write com.googlecode.iterm2 PrefsCustomFolder "$HOME/iterm2"
-print_info "iTerm2 configured to load from ~/iterm2"
+defaults write com.googlecode.iterm2 PrefsCustomFolder "$HOME/.iterm2"
+print_info "iTerm2 configured to load from ~/.iterm2"
 
 # ------------------------- fzf Key Bindings -------------------------
 if [ -f /opt/homebrew/opt/fzf/install ]; then
