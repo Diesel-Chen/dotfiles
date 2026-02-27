@@ -23,13 +23,18 @@ print_warn() { echo -e "${YELLOW}[WARN]${NC} $1"; }
 print_error() { echo -e "${RED}[ERROR]${NC} $1"; }
 
 # ------------------------- Homebrew -------------------------
+# 检测 Homebrew 前缀路径
+if [[ $(uname -m) == 'arm64' ]]; then
+    HOMEBREW_PREFIX="/opt/homebrew"
+else
+    HOMEBREW_PREFIX="/usr/local"
+fi
+
 if ! command -v brew &> /dev/null; then
     print_info "Installing Homebrew..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-    if [[ $(uname -m) == 'arm64' ]]; then
-        eval "$(/opt/homebrew/bin/brew shellenv)"
-    fi
+    eval "$($HOMEBREW_PREFIX/bin/brew shellenv)"
 else
     print_info "Homebrew already installed"
 fi
@@ -85,9 +90,10 @@ defaults write com.googlecode.iterm2 PrefsCustomFolder "$HOME/.iterm2"
 print_info "iTerm2 configured to load from ~/.iterm2"
 
 # ------------------------- fzf Key Bindings -------------------------
-if [ -f /opt/homebrew/opt/fzf/install ]; then
+FZF_INSTALL="$HOMEBREW_PREFIX/opt/fzf/install"
+if [ -f "$FZF_INSTALL" ]; then
     print_info "Setting up fzf key bindings..."
-    /opt/homebrew/opt/fzf/install --key-bindings --completion --no-update-rc --no-bash --no-fish
+    "$FZF_INSTALL" --key-bindings --completion --no-update-rc --no-bash --no-fish
 fi
 
 # ------------------------- Permissions -------------------------
