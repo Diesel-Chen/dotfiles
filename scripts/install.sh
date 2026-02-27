@@ -73,9 +73,9 @@ stow vim
 stow ssh
 stow iterm2
 
-# Ensure .ssh directory has correct permissions
-chmod 700 "$HOME/.ssh"
-chmod 600 "$HOME/.ssh/config"
+# Ensure .ssh directory and config have correct permissions
+[ -d "$HOME/.ssh" ] && chmod 700 "$HOME/.ssh"
+[ -f "$HOME/.ssh/config" ] && chmod 600 "$HOME/.ssh/config"
 
 # ------------------------- iTerm2 Configuration -------------------------
 print_info "Configuring iTerm2..."
