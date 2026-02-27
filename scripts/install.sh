@@ -68,11 +68,11 @@ cd "$DOTFILES_DIR"
 [ -f "$HOME/.ssh/config" ] && rm -f "$HOME/.ssh/config"
 [ -L "$HOME/.iterm2" ] && rm -f "$HOME/.iterm2"
 
-stow zsh
-stow git
-stow vim
-stow ssh
-stow iterm2
+stow --target="$HOME" zsh
+stow --target="$HOME" git
+stow --target="$HOME" vim
+stow --target="$HOME" ssh
+stow --target="$HOME" iterm2
 
 # Ensure .ssh directory and config have correct permissions
 [ -d "$HOME/.ssh" ] && chmod 700 "$HOME/.ssh"
