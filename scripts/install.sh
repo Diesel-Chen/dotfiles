@@ -47,6 +47,16 @@ else
     print_info "Oh My Zsh already installed"
 fi
 
+# ------------------------- 切换默认 Shell 到 zsh -------------------------
+if [[ "$SHELL" != *"zsh" ]]; then
+    print_info "Switching default shell to zsh..."
+    chsh -s "$(which zsh)" 2>/dev/null || {
+        print_warn "无法自动切换 shell，请手动运行: chsh -s \$(which zsh)"
+    }
+else
+    print_info "Default shell is already zsh"
+fi
+
 # ------------------------- Powerlevel10k -------------------------
 P10K_DIR="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
 if [ ! -d "$P10K_DIR" ]; then
