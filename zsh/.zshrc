@@ -130,7 +130,9 @@ source $ZSH/oh-my-zsh.sh
 # -------------------------node(fnm多版本管理)--------------------------
 #
 
-eval "$(fnm env --use-on-cd)"
+if command -v fnm &>/dev/null; then
+    eval "$(fnm env --use-on-cd)"
+fi
 
 # -------------------------node(fnm多版本管理)--------------------------
 #
@@ -168,3 +170,6 @@ export PATH=$PATH:$GOPATH/bin
 
 # -------------------------golang 配置--------------------------
 #
+
+# Added by Antigravity
+export PATH="/Users/finishit/.antigravity/antigravity/bin:$PATH"
