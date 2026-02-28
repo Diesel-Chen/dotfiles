@@ -178,12 +178,14 @@ cd "$DOTFILES_DIR"
 [ -f "$HOME/.vimrc" ] && rm -f "$HOME/.vimrc"
 [ -f "$HOME/.ssh/config" ] && rm -f "$HOME/.ssh/config"
 [ -L "$HOME/.iterm2" ] && rm -f "$HOME/.iterm2"
+[ -f "$HOME/Library/Application Support/PixPin/Config/PixPinConfig.json" ] && rm -f "$HOME/Library/Application Support/PixPin/Config/PixPinConfig.json"
 
 stow --target="$HOME" zsh
 stow --target="$HOME" git
 stow --target="$HOME" vim
 stow --target="$HOME" ssh
 stow --target="$HOME" iterm2
+stow --target="$HOME" pixpin
 
 # Ensure .ssh directory and config have correct permissions
 [ -d "$HOME/.ssh" ] && chmod 700 "$HOME/.ssh"

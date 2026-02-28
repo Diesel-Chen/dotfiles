@@ -1,5 +1,4 @@
 tap "farion1231/ccswitch"
-brew "fnm"
 brew "fzf"
 brew "git"
 brew "mas"

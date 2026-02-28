@@ -154,3 +154,17 @@ alias claudeAuto='claude --dangerously-skip-permissions'
 
 
 
+
+# Added by Antigravity
+export PATH="/Users/finishit/.antigravity/antigravity/bin:$PATH"
+
+
+
+# -------------------------golang 配置--------------------------
+#
+
+export GOPATH=$HOME/Workspace/go
+export PATH=$PATH:$GOPATH/bin
+
+# -------------------------golang 配置--------------------------
+#
