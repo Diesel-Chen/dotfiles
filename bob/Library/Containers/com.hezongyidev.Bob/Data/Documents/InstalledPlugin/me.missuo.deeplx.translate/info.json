@@ -1,0 +1,48 @@
+{
+    "identifier": "me.missuo.deeplx.translate",
+    "category": "translate",
+    "version": "1.0.9",
+    "name": "DeepL X",
+    "summary": "Plugin based on OwO-Network/DeepLX",
+    "author": "missuo",
+    "appcast": "https://github.com/missuo/bob-plugin-deeplx/raw/main/appcast.json",
+    "homepage": "https://github.com/missuo/bob-plugin-deeplx",
+    "icon": "icon.png",
+    "minBobVersion": "0.5.0",
+    "options": [
+        {
+            "identifier": "url",
+            "type": "text",
+            "title": "API",
+            "defaultValue": "http://localhost:1188/translate",
+            "desc": "如果你在本地部署了API，不要修改。",
+            "textConfig": {
+                "type": "visible"
+            }
+        },
+        {
+            "identifier": "token",
+            "type": "text",
+            "title": "Token",
+            "desc": "如果你在服务端没有设置，请留空。",
+            "defaultValue": ""
+        },
+        {
+            "identifier": "alternatives",
+            "type": "menu",
+            "title": "Alternatives",
+            "desc": "开启此功能后，将显示一个替代结果，默认开启。",
+            "defaultValue": "1",
+            "menuValues": [
+                {
+                    "title": "开启",
+                    "value": "1"
+                },
+                {
+                    "title": "关闭",
+                    "value": "2"
+                }
+            ]
+        }
+    ]
+}

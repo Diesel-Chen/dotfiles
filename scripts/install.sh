@@ -179,6 +179,7 @@ cd "$DOTFILES_DIR"
 [ -f "$HOME/.ssh/config" ] && rm -f "$HOME/.ssh/config"
 [ -L "$HOME/.iterm2" ] && rm -f "$HOME/.iterm2"
 [ -f "$HOME/Library/Application Support/PixPin/Config/PixPinConfig.json" ] && rm -f "$HOME/Library/Application Support/PixPin/Config/PixPinConfig.json"
+[ -d "$HOME/Library/Containers/com.hezongyidev.Bob/Data/Documents/InstalledPlugin" ] && rm -rf "$HOME/Library/Containers/com.hezongyidev.Bob/Data/Documents/InstalledPlugin"
 
 stow --target="$HOME" zsh
 stow --target="$HOME" git
@@ -186,6 +187,7 @@ stow --target="$HOME" vim
 stow --target="$HOME" ssh
 stow --target="$HOME" iterm2
 stow --target="$HOME" pixpin
+stow --target="$HOME" bob
 
 # Ensure .ssh directory and config have correct permissions
 [ -d "$HOME/.ssh" ] && chmod 700 "$HOME/.ssh"
