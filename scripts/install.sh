@@ -148,7 +148,7 @@ if [[ "$IS_LEGACY_MACOS" == true ]]; then
 
     # mas 安装（如果 mas 可用）
     if command -v mas &>/dev/null; then
-        mas_apps=("BaiduNetdisk:547166701" "Bitwarden:1352778147" "Bob:1630034110" "CleanMyMac:1339170533" "DingTalk:1435447041" "WeChat:836500024")
+        mas_apps=("BaiduNetdisk:547166701" "Bitwarden:1352778147" "CleanMyMac:1339170533" "DingTalk:1435447041" "WeChat:836500024")
         for app in "${mas_apps[@]}"; do
             name="${app%%:*}"
             id="${app##*:}"
@@ -179,15 +179,12 @@ cd "$DOTFILES_DIR"
 [ -f "$HOME/.ssh/config" ] && rm -f "$HOME/.ssh/config"
 [ -L "$HOME/.iterm2" ] && rm -f "$HOME/.iterm2"
 [ -f "$HOME/Library/Application Support/PixPin/Config/PixPinConfig.json" ] && rm -f "$HOME/Library/Application Support/PixPin/Config/PixPinConfig.json"
-[ -d "$HOME/Library/Containers/com.hezongyidev.Bob/Data/Documents/InstalledPlugin" ] && rm -rf "$HOME/Library/Containers/com.hezongyidev.Bob/Data/Documents/InstalledPlugin"
-
 stow --target="$HOME" zsh
 stow --target="$HOME" git
 stow --target="$HOME" vim
 stow --target="$HOME" ssh
 stow --target="$HOME" iterm2
 stow --target="$HOME" pixpin
-stow --target="$HOME" bob
 
 # Ensure .ssh directory and config have correct permissions
 [ -d "$HOME/.ssh" ] && chmod 700 "$HOME/.ssh"
